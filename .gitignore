@@ -7,3 +7,7 @@ tests.ipynb
 train.py
 *.pkl
 .env
+
+# CI/CD artifacts
+*.zip
+*.tar.gz

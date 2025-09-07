@@ -1,5 +1,6 @@
 import joblib
 import numpy as np
+import time
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
@@ -36,9 +37,11 @@ def train_and_save_model():
     print("\n📊 Classification Report:\n", classification_report(test_labels, preds))
     
 
+    version = int(time.time())  # Unix timestamp
+
     # Save pipeline
-    joblib.dump((vectorizer, model), "sentiment_model.pkl")
-    print("Model saved as sentiment_model.pkl")
+    joblib.dump((vectorizer, model), f"sentiment_model_v{version}.pkl")
+    print(f"Model saved as sentiment_model_v{version}.pkl")
 
     # Return trained objects for use in main.py
     return vectorizer, model
