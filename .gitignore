@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+*.jsx
+project_notes.txt
+*.json
+tests.ipynb
+train.py
+*.pkl
+.env
