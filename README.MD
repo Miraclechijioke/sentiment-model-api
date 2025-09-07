@@ -22,19 +22,23 @@ A lightweight sentiment analysis API built with **FastAPI**. The API can predict
 ```bash
 git clone <your-repo-url>
 cd Deploy-an-ML-Model-with-FastAPI
+```
 
 ### 2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
+```
 
 ### 3. Run the API locally
 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8080 --reload
 Open http://127.0.0.1:8080/docs to explore the API via Swagger UI.
+```
 
 ## Project Structure
+
 ```bash
 ├── main.py                 # FastAPI app
 ├── train_and_evaluate.py   # Model training and saving
@@ -43,6 +47,7 @@ Open http://127.0.0.1:8080/docs to explore the API via Swagger UI.
 ├── Dockerfile              # Docker setup
 ├── tests/                  # Unit tests
 └── .github/workflows/      # CI/CD pipeline definitions
+```
 
 ## Logging
 
