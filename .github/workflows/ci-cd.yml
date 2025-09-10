@@ -15,12 +15,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -37,10 +37,10 @@ jobs:
           fi
 
       - name: Upload trained model artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: sentiment_model
-          path: sentiment_model.pkl
+          path: sentiment_model_v*.pkl
 
   deploy:
     name: Deploy to Azure App Service
@@ -49,18 +49,18 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Download trained model artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: sentiment_model
           path: .
 
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #- name: Login to Azure # If using Service Principal / AZURE_CREDENTIALS
+      #  uses: azure/login@v1
+      #  with:
+      #    creds: ${{ secrets.AZURE_CREDENTIALS }} 
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
