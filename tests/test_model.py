@@ -16,6 +16,4 @@ def test_model_training():
     pred = model.predict(X)
     assert pred[0] in [0, 1]
 
-    from train_and_evaluate import train_and_save_model
-
 
