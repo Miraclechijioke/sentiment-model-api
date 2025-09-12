@@ -58,11 +58,16 @@ jobs:
           name: sentiment_model
           path: .
 
+          # Confirm the model file is present before deploying
+      - name: Verify artifact contents
+        run: ls -lh sentiment_model_v*.pkl
+
       #- name: Login to Azure # If using Service Principal / AZURE_CREDENTIALS
       #  uses: azure/login@v1
       #  with:
       #    creds: ${{ secrets.AZURE_CREDENTIALS }} 
 
+        # Deploy both the source code and the downloaded model to Azure
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
         with:
