@@ -26,11 +26,13 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 model_store = {"vectorizer": None, "model": None} # Start with None so the API can run even if model not loaded
 
 def get_latest_model_file():
     """Return the latest sentiment_model_v*.pkl file based on timestamp in filename"""
-    files = glob.glob("sentiment_model_v*.pkl")
+    files = glob.glob(os.path.join(BASE_DIR, "sentiment_model_v*.pkl"))
     if not files:
         logger.warning(".pkl file doesn't exist in directory")
         return None
